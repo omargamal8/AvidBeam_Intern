@@ -1002,8 +1002,8 @@ def addMediaSource(depMod,filewin):
     resolution_width = vid.get(cv2.CAP_PROP_FRAME_WIDTH)
     resolution_height = vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
     fps = vid.get(cv2.CAP_PROP_FPS)
-
-    addMediaSrc(depMod,fps,e2.get(),e3.get(),e4.get(),e5.get(),e6.get(),var.get(),e7.get() ,medcont,filewin)    
+    addMediaSrc(depMod,fps,e2.get(),e3.get(),e4.get(),e5.get(),e6.get(),var.get(),e7.get() ,medcont,filewin)
+        
   save = Button(filewin, text ="Add",bg=mycolor ,fg='white',command= save_button_action )
   save.grid(row=20, columnspan=20)
 
