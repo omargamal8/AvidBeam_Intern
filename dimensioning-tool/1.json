@@ -1,0 +1,35 @@
+{
+  "media_provider_id": 0, 
+  "file_media_provider": {
+    "input_timestamp_offset": 0, 
+    "timestamp": "20160411190500", 
+    "subscribe_settings": {
+      "topic": "5666eeb2eb0a1935d6000000_20160411185411-platform", 
+      "subscribe_conn_str": "tcp://70.70.70.10:6001"
+    }, 
+    "is_live": false, 
+    "meta_data": {
+      "input_source": "testing-source", 
+      "user_id": "testing"
+    }, 
+    "is_original_source": true, 
+    "plugins": [
+      {
+        "plugin_per_media_context": {
+          "roi_y": 2, 
+          "roi_height": 50, 
+          "roi_width": 50, 
+          "roi_x": 1
+        }, 
+        "plugin_name": "LPR"
+      }
+    ], 
+    "path": "/media/omar/1E3896803896569D/AvidBeam/DIm Tool/dimensioning-tool/20160308155630-35.avi", 
+    "is_subscribed": false
+  }, 
+  "plugin_name": "LPR", 
+  "empty_output_interface": {}, 
+  "output_interface_id": 0, 
+  "plugin_path": "/media/omar/1E3896803896569D/AvidBeam/DIm Tool/dimensioning-tool/LPRViBEPlugin.so", 
+  "plugin_context": {}
+}
