@@ -12,8 +12,10 @@ class Storage:
 		self._mapper = {"comp_mod":self._modules, "media":self._media, "deploy":self._deploys}
 
 	def insert_data(self, data, type):
+
 			_db = self._mapper[type]
-			_db._modules.insert(data)
+			print("trying to insert", data)
+			_db.insert(data)
 
 
 	def retrieve_data(self, type):
@@ -23,3 +25,7 @@ class Storage:
 		for item in _db.find():
 			returns.append(item)
 		return returns
+
+	def delete(self, type, attr):
+		_db = self._mapper[type]
+		_db.delete_many(attr)

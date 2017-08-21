@@ -23,9 +23,10 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_Dialog(object):
-    import Navigator
+
     def __init__(self):
-        self._navigator = Navigator
+        import Navigator
+        self._navigator = Navigator.Navigator()
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
         Dialog.resize(640, 572)
@@ -109,24 +110,26 @@ class Ui_Dialog(object):
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
 
         self.retranslateUi(Dialog)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), Dialog.accept)
+        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), lambda:self.saveCallback(Dialog))
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), Dialog.reject)
+        QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), lambda:self.Plugin_Path_LE.setText(QtGui.QFileDialog.getOpenFileName()))
+
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-    def saveCallback(self):
+    def saveCallback(self,Dialog):
         
         info = []
-        info.append(self.Algorithm_Name_LE.text())
-        info.append(self.Ram_Req_LE)
-        info.append(self.Threads_LE)
-        info.append(self.Cores_LE)
-        info.append(self.Phy_Cores_LE)
-        info.append(self.Max_Input_Res_LE)
-        info.append(self.Max_Freq_LE)
-        info.append(self.Processing_FPS_LE)
-        info.append(self.Algorithm_Version_LE)
-        info.append(self.Plugin_Path_LE)
-        Navigator.trigger("New_Mod",info)
-
+        info.append(str(self.Algorithm_Name_LE.text()))
+        info.append(str(self.Ram_Req_LE.text()))
+        info.append(str(self.Threads_LE.text()))
+        info.append(str(self.Cores_LE.text()))
+        info.append(str(self.Phy_Cores_LE.text()))
+        info.append(str(self.Max_Input_Res_LE.text()))
+        info.append(str(self.Max_Freq_LE.text()))
+        info.append(str(self.Processing_FPS_LE.text()))
+        info.append(str(self.Algorithm_Version_LE.text()))
+        info.append(str(self.Plugin_Path_LE.text()))
+        self._navigator.trigger("new_mod",info)
+        Dialog.accept()
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
